@@ -3,6 +3,7 @@ import '@aws-amplify/ui-react/styles.css'
 import { useEffect, useState } from "react";
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
+import { TodoCreateForm } from '../ui-components';
 
 const client = generateClient<Schema>();
 
@@ -28,6 +29,7 @@ function App() {
         {({ signOut, user }) => (
     <main>
       <h1>{user?.signInDetails?.loginId}'s todos</h1>
+        <TodoCreateForm />
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
