@@ -17,7 +17,7 @@ const schema = a.schema({
     state: a.string(),
     zip: a.string(),
     country: a.string(),
-    message: a.string(),
+    content: a.string(),
       }).authorization(allow => [allow.owner()]),
 });
 
