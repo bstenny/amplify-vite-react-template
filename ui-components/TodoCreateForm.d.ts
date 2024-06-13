@@ -24,6 +24,7 @@ export declare type TodoCreateFormInputValues = {
     state?: string;
     zip?: string;
     country?: string;
+    content?: string;
 };
 export declare type TodoCreateFormValidationValues = {
     name?: ValidationFunction<string>;
@@ -34,6 +35,7 @@ export declare type TodoCreateFormValidationValues = {
     state?: ValidationFunction<string>;
     zip?: ValidationFunction<string>;
     country?: ValidationFunction<string>;
+    content?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type TodoCreateFormOverridesProps = {
@@ -46,6 +48,7 @@ export declare type TodoCreateFormOverridesProps = {
     state?: PrimitiveOverrideProps<TextFieldProps>;
     zip?: PrimitiveOverrideProps<TextFieldProps>;
     country?: PrimitiveOverrideProps<TextFieldProps>;
+    content?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type TodoCreateFormProps = React.PropsWithChildren<{
     overrides?: TodoCreateFormOverridesProps | undefined | null;

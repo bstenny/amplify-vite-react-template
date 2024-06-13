@@ -7,6 +7,7 @@ export const getTodo = /* GraphQL */ `
     getTodo(id: $id) {
       address
       city
+      content
       country
       createdAt
       email
@@ -31,6 +32,7 @@ export const listTodos = /* GraphQL */ `
       items {
         address
         city
+        content
         country
         createdAt
         email

@@ -26,6 +26,7 @@ export default function TodoCreateForm(props) {
     state: "",
     zip: "",
     country: "",
+    content: "",
   };
   const [name, setName] = React.useState(initialValues.name);
   const [email, setEmail] = React.useState(initialValues.email);
@@ -35,6 +36,7 @@ export default function TodoCreateForm(props) {
   const [state, setState] = React.useState(initialValues.state);
   const [zip, setZip] = React.useState(initialValues.zip);
   const [country, setCountry] = React.useState(initialValues.country);
+  const [content, setContent] = React.useState(initialValues.content);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setName(initialValues.name);
@@ -45,6 +47,7 @@ export default function TodoCreateForm(props) {
     setState(initialValues.state);
     setZip(initialValues.zip);
     setCountry(initialValues.country);
+    setContent(initialValues.content);
     setErrors({});
   };
   const validations = {
@@ -56,6 +59,7 @@ export default function TodoCreateForm(props) {
     state: [],
     zip: [],
     country: [],
+    content: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -91,6 +95,7 @@ export default function TodoCreateForm(props) {
           state,
           zip,
           country,
+          content,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -161,6 +166,7 @@ export default function TodoCreateForm(props) {
               state,
               zip,
               country,
+              content,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -192,6 +198,7 @@ export default function TodoCreateForm(props) {
               state,
               zip,
               country,
+              content,
             };
             const result = onChange(modelFields);
             value = result?.email ?? value;
@@ -223,6 +230,7 @@ export default function TodoCreateForm(props) {
               state,
               zip,
               country,
+              content,
             };
             const result = onChange(modelFields);
             value = result?.phone ?? value;
@@ -254,6 +262,7 @@ export default function TodoCreateForm(props) {
               state,
               zip,
               country,
+              content,
             };
             const result = onChange(modelFields);
             value = result?.address ?? value;
@@ -285,6 +294,7 @@ export default function TodoCreateForm(props) {
               state,
               zip,
               country,
+              content,
             };
             const result = onChange(modelFields);
             value = result?.city ?? value;
@@ -316,6 +326,7 @@ export default function TodoCreateForm(props) {
               state: value,
               zip,
               country,
+              content,
             };
             const result = onChange(modelFields);
             value = result?.state ?? value;
@@ -347,6 +358,7 @@ export default function TodoCreateForm(props) {
               state,
               zip: value,
               country,
+              content,
             };
             const result = onChange(modelFields);
             value = result?.zip ?? value;
@@ -378,6 +390,7 @@ export default function TodoCreateForm(props) {
               state,
               zip,
               country: value,
+              content,
             };
             const result = onChange(modelFields);
             value = result?.country ?? value;
@@ -391,6 +404,38 @@ export default function TodoCreateForm(props) {
         errorMessage={errors.country?.errorMessage}
         hasError={errors.country?.hasError}
         {...getOverrideProps(overrides, "country")}
+      ></TextField>
+      <TextField
+        label="Content"
+        isRequired={false}
+        isReadOnly={false}
+        value={content}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              email,
+              phone,
+              address,
+              city,
+              state,
+              zip,
+              country,
+              content: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.content ?? value;
+          }
+          if (errors.content?.hasError) {
+            runValidationTasks("content", value);
+          }
+          setContent(value);
+        }}
+        onBlur={() => runValidationTasks("content", content)}
+        errorMessage={errors.content?.errorMessage}
+        hasError={errors.content?.hasError}
+        {...getOverrideProps(overrides, "content")}
       ></TextField>
       <Flex
         justifyContent="space-between"

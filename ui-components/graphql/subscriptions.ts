@@ -10,6 +10,7 @@ export const onCreateTodo = /* GraphQL */ `
     onCreateTodo(filter: $filter, owner: $owner) {
       address
       city
+      content
       country
       createdAt
       email
@@ -32,6 +33,7 @@ export const onDeleteTodo = /* GraphQL */ `
     onDeleteTodo(filter: $filter, owner: $owner) {
       address
       city
+      content
       country
       createdAt
       email
@@ -54,6 +56,7 @@ export const onUpdateTodo = /* GraphQL */ `
     onUpdateTodo(filter: $filter, owner: $owner) {
       address
       city
+      content
       country
       createdAt
       email

@@ -10,6 +10,7 @@ export const createTodo = /* GraphQL */ `
     createTodo(condition: $condition, input: $input) {
       address
       city
+      content
       country
       createdAt
       email
@@ -32,6 +33,7 @@ export const deleteTodo = /* GraphQL */ `
     deleteTodo(condition: $condition, input: $input) {
       address
       city
+      content
       country
       createdAt
       email
@@ -54,6 +56,7 @@ export const updateTodo = /* GraphQL */ `
     updateTodo(condition: $condition, input: $input) {
       address
       city
+      content
       country
       createdAt
       email
