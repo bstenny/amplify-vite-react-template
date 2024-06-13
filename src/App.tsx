@@ -7,8 +7,8 @@ function App() {
   const [formData, setFormData] = useState<any>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  function handleFormSubmit(data: any) {
-    setFormData(data);
+  function handleFormSubmit(fields: any) {
+    setFormData(fields);
     setIsSubmitted(true);
   }
 
@@ -18,7 +18,12 @@ function App() {
         <main>
           <h1>Welcome, {user?.signInDetails?.loginId}</h1>
           {!isSubmitted ? (
-            <TodoCreateForm onSubmit={handleFormSubmit} />
+            <TodoCreateForm
+              onSubmit={(fields) => {
+                handleFormSubmit(fields);
+                return fields;
+              }}
+            />
           ) : (
             <div>
               <h2>Form Submission</h2>
