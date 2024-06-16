@@ -1,24 +1,23 @@
 import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
 
 /*== STEP 1 ===============================================================
-The section below creates a Todo database table with a "content" field. Try
-adding a new "isDone" field as a boolean. The authorization rule below
-specifies that any user authenticated via an API key can "create", "read",
-"update", and "delete" any "Todo" records.
+Define the PatientForm model with the necessary fields and authorization rules.
 =========================================================================*/
 const schema = a.schema({
-  Todo: a
+  PatientForm: a
     .model({
       name: a.string(),
+      age: a.string(),
+      injury: a.string(),
+      phone: a.string(),
       email: a.string(),
-    phone: a.string(),
-    address: a.string(),
-    city: a.string(),
-    state: a.string(),
-    zip: a.string(),
-    country: a.string(),
-    content: a.string(),
-      }).authorization(allow => [allow.owner()]),
+      address: a.string(),
+      city: a.string(),
+      state: a.string(),
+      zip: a.string(),
+      country: a.string(),
+    })
+    .authorization(allow => [allow.owner()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
@@ -26,8 +25,7 @@ export type Schema = ClientSchema<typeof schema>;
 export const data = defineData({
   schema,
   authorizationModes: {
-      defaultAuthorizationMode: 'userPool',
-
+    defaultAuthorizationMode: 'userPool',
   },
 });
 
