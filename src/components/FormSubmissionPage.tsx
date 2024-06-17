@@ -1,16 +1,25 @@
 import { useState } from 'react';
 import { Card, Flex } from '@aws-amplify/ui-react';
 import { TodoCreateForm } from '../../ui-components';
+import { Storage } from 'aws-amplify';
 
 const FormSubmissionPage = () => {
   const [formData, setFormData] = useState<any>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  function handleFormSubmit(fields: any) {
+  const handleFormSubmit = async (fields: any) => {
     setFormData(fields);
     setIsSubmitted(true);
+
+    // Upload form data to S3
+    const user = await Auth.currentAuthenticatedUser();
+    const fileName = `forms/${user.username}/${new Date().toISOString()}.json`;
+    await Storage.put(fileName, JSON.stringify(fields), {
+      contentType: 'application/json',
+    });
+
     return fields;
-  }
+  };
 
   return (
     <Flex justifyContent="center" alignItems="center" flex="1">
