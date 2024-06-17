@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { Card, Flex } from '@aws-amplify/ui-react';
 import { TodoCreateForm } from '../../ui-components';
-import { Storage } from 'aws-amplify';
+import { uploadData } from 'aws-amplify/storage';
+import { Amplify } from 'aws-amplify';
+import outputs from '../../amplify_outputs.json';
+
+Amplify.configure(outputs);
 
 const FormSubmissionPage = () => {
   const [formData, setFormData] = useState<any>(null);
@@ -11,11 +15,12 @@ const FormSubmissionPage = () => {
     setFormData(fields);
     setIsSubmitted(true);
 
+    const fileName = `forms/${new Date().toISOString()}.json`;
+
     // Upload form data to S3
-    const user = await Auth.currentAuthenticatedUser();
-    const fileName = `forms/${user.username}/${new Date().toISOString()}.json`;
-    await Storage.put(fileName, JSON.stringify(fields), {
-      contentType: 'application/json',
+    await uploadData({
+      path: fileName,
+      data: JSON.stringify(fields)
     });
 
     return fields;
