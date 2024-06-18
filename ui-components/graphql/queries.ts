@@ -2,16 +2,17 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getTodo = /* GraphQL */ `
-  query GetTodo($id: ID!) {
-    getTodo(id: $id) {
+export const getPatientForm = /* GraphQL */ `
+  query GetPatientForm($id: ID!) {
+    getPatientForm(id: $id) {
       address
+      age
       city
-      content
       country
       createdAt
       email
       id
+      injury
       name
       owner
       phone
@@ -22,21 +23,22 @@ export const getTodo = /* GraphQL */ `
     }
   }
 `;
-export const listTodos = /* GraphQL */ `
-  query ListTodos(
-    $filter: ModelTodoFilterInput
+export const listPatientForms = /* GraphQL */ `
+  query ListPatientForms(
+    $filter: ModelPatientFormFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listPatientForms(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         address
+        age
         city
-        content
         country
         createdAt
         email
         id
+        injury
         name
         owner
         phone

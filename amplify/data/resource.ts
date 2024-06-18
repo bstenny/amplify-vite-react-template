@@ -4,7 +4,7 @@ import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
 Define the PatientForm model with the necessary fields and authorization rules.
 =========================================================================*/
 const schema = a.schema({
-  PatientForm: a
+  Todo: a
     .model({
       name: a.string(),
       age: a.string(),

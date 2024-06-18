@@ -2,19 +2,20 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateTodo = /* GraphQL */ `
-  subscription OnCreateTodo(
-    $filter: ModelSubscriptionTodoFilterInput
+export const onCreatePatientForm = /* GraphQL */ `
+  subscription OnCreatePatientForm(
+    $filter: ModelSubscriptionPatientFormFilterInput
     $owner: String
   ) {
-    onCreateTodo(filter: $filter, owner: $owner) {
+    onCreatePatientForm(filter: $filter, owner: $owner) {
       address
+      age
       city
-      content
       country
       createdAt
       email
       id
+      injury
       name
       owner
       phone
@@ -25,19 +26,20 @@ export const onCreateTodo = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteTodo = /* GraphQL */ `
-  subscription OnDeleteTodo(
-    $filter: ModelSubscriptionTodoFilterInput
+export const onDeletePatientForm = /* GraphQL */ `
+  subscription OnDeletePatientForm(
+    $filter: ModelSubscriptionPatientFormFilterInput
     $owner: String
   ) {
-    onDeleteTodo(filter: $filter, owner: $owner) {
+    onDeletePatientForm(filter: $filter, owner: $owner) {
       address
+      age
       city
-      content
       country
       createdAt
       email
       id
+      injury
       name
       owner
       phone
@@ -48,19 +50,20 @@ export const onDeleteTodo = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateTodo = /* GraphQL */ `
-  subscription OnUpdateTodo(
-    $filter: ModelSubscriptionTodoFilterInput
+export const onUpdatePatientForm = /* GraphQL */ `
+  subscription OnUpdatePatientForm(
+    $filter: ModelSubscriptionPatientFormFilterInput
     $owner: String
   ) {
-    onUpdateTodo(filter: $filter, owner: $owner) {
+    onUpdatePatientForm(filter: $filter, owner: $owner) {
       address
+      age
       city
-      content
       country
       createdAt
       email
       id
+      injury
       name
       owner
       phone

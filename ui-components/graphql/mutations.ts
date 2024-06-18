@@ -2,19 +2,20 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createTodo = /* GraphQL */ `
-  mutation CreateTodo(
-    $condition: ModelTodoConditionInput
-    $input: CreateTodoInput!
+export const createPatientForm = /* GraphQL */ `
+  mutation CreatePatientForm(
+    $condition: ModelPatientFormConditionInput
+    $input: CreatePatientFormInput!
   ) {
-    createTodo(condition: $condition, input: $input) {
+    createPatientForm(condition: $condition, input: $input) {
       address
+      age
       city
-      content
       country
       createdAt
       email
       id
+      injury
       name
       owner
       phone
@@ -25,19 +26,20 @@ export const createTodo = /* GraphQL */ `
     }
   }
 `;
-export const deleteTodo = /* GraphQL */ `
-  mutation DeleteTodo(
-    $condition: ModelTodoConditionInput
-    $input: DeleteTodoInput!
+export const deletePatientForm = /* GraphQL */ `
+  mutation DeletePatientForm(
+    $condition: ModelPatientFormConditionInput
+    $input: DeletePatientFormInput!
   ) {
-    deleteTodo(condition: $condition, input: $input) {
+    deletePatientForm(condition: $condition, input: $input) {
       address
+      age
       city
-      content
       country
       createdAt
       email
       id
+      injury
       name
       owner
       phone
@@ -48,19 +50,20 @@ export const deleteTodo = /* GraphQL */ `
     }
   }
 `;
-export const updateTodo = /* GraphQL */ `
-  mutation UpdateTodo(
-    $condition: ModelTodoConditionInput
-    $input: UpdateTodoInput!
+export const updatePatientForm = /* GraphQL */ `
+  mutation UpdatePatientForm(
+    $condition: ModelPatientFormConditionInput
+    $input: UpdatePatientFormInput!
   ) {
-    updateTodo(condition: $condition, input: $input) {
+    updatePatientForm(condition: $condition, input: $input) {
       address
+      age
       city
-      content
       country
       createdAt
       email
       id
+      injury
       name
       owner
       phone
