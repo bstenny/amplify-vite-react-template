@@ -20,7 +20,7 @@ const FormSubmissionPage = () => {
     // Upload form data to S3
     await uploadData({
       path: fileName,
-      data: JSON.stringify(fields)
+      data: JSON.stringify(fields),
     });
 
     return fields;
