@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
-import { uploadData } from 'aws-amplify/storage';
-import { Amplify } from 'aws-amplify';
-import outputs from '../../amplify_outputs.json';
-import { Card, Flex, Button } from '@aws-amplify/ui-react';
-
-Amplify.configure(outputs);
+import { uploadData } from '@aws-amplify/storage';
+// Import any additional UI components from your project (e.g., Button, Card)
 
 const FormSubmissionPage = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -17,23 +13,29 @@ const FormSubmissionPage = () => {
 
   const handleUpload = async () => {
     if (file) {
-      await uploadData({
-        path: `picture-submissions/${file.name}`,
-        data: file,
-      });
-      alert('File uploaded successfully');
+      try {
+        await uploadData({
+          path: `picture-submissions/${file.name}`, // Use key for file path
+          data: file, // Include file data within options
+        });
+        alert('File uploaded successfully');
+      } catch (error) {
+        console.error('Error uploading file:', error);
+        alert('File upload failed'); // Update error message for user
+      }
     } else {
       alert('No file selected');
     }
   };
 
+  // ... rest of your FormSubmissionPage component's JSX (replace with your existing JSX)
+
   return (
-    <Flex justifyContent="center" alignItems="center" flex="1">
-      <Card width="400px" padding="20px" boxShadow="small">
-        <input type="file" onChange={handleChange} />
-        <Button onClick={handleUpload}>Upload</Button>
-      </Card>
-    </Flex>
+    <div>
+      {/* Your existing form elements */}
+      <input type="file" onChange={handleChange} />
+      <button onClick={handleUpload}>Upload</button>
+    </div>
   );
 };
 
